@@ -1,0 +1,34 @@
+.latest-repos__repo {
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.latest-repos__repo a {
+  margin: .5rem;
+  border-radius: 6px;
+  padding: 6px 12px;
+  margin-right: 1rem;
+  text-decoration: none;
+  background-color: rgb(24, 24, 24);
+  color: aliceblue;
+  font-weight: 1000;
+}
+
+.latest-repos__repo a:hover {
+  background-color: rgb(47, 47, 47);
+  text-decoration: underline;
+  color: #848af9;
+}
+
+.latest-repos__repo a:active {
+  background-color: rgb(64, 64, 64);
+}
+
+.latest-repos__repo p {
+  margin: 6px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background-color: rgba(255,255,255,0.4);  
+}

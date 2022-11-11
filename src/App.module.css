@@ -1,0 +1,8 @@
+.title {
+  color: white;
+  font-size: 3.5rem;
+  font-weight: 1200;
+  text-shadow: 2px 4px 2px rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+}
