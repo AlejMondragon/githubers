@@ -4,7 +4,7 @@ import classes from "./Search.module.css"
 const Search = ({ onDebounceSearch }) => {
   const [ showSearchBar , setShowSearchBar ] = useState(false);
   const searchInputBarRef = useRef(null)
-  const [ searchInput, setSearchInput ] = useState('AlejMondragon')
+  const [ searchInput, setSearchInput ] = useState('alejmondragon')
 
   const toggleSearch = () => {
     searchInputBarRef.current.focus()
@@ -19,7 +19,6 @@ const Search = ({ onDebounceSearch }) => {
     }, 500)
 
     return (() => {
-      console.log("clearing timer...");
       clearTimeout(timer)
     })
   }, [searchInput, onDebounceSearch])
