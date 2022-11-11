@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import classes from './App.module.css';
 import Card from './components/UI/Card';
 import Search from './components/Search';
@@ -9,34 +9,40 @@ const App = () => {
   const [ repos, setRepos ] = useState(null)
 
   const fetchUserProfile = async (input) => {
+    try {
     const profileResponse = await fetch(`https://api.github.com/users/${input}?client_id=2b8ff4ba5bae96a2a340&client_secret=ed9f2ec6c01ad10f8e8f83652ebb91429a513448`);
 
     if(!profileResponse.ok) {
       throw new Error("Something went wrong when fetching the profile's data...")
     }
+
     const profileData = await profileResponse.json()
     setProfile(profileData)
+
+    } catch(error) {
+      console.log(error.message);
+    }
   }
 
   const fetchUserRepos = async (input) => {
+    try {
     const reposResponse = await fetch(`https://api.github.com/users/${input}/repos?per_page=7&sort=created:asc&client_id=2b8ff4ba5bae96a2a340&client_secret=ed9f2ec6c01ad10f8e8f83652ebb91429a513448`);
 
     if(!reposResponse.ok){
       throw new Error("Something went wrong when fetching the repositories data...")
     }
-
     const reposData = await reposResponse.json()
     setRepos(reposData)
-  }
 
-  const fetchUserData = (input) => {
-    try{
-      fetchUserProfile(input)
-      fetchUserRepos(input)
     } catch(error) {
-      console.log(error);
+      console.log(error.message);
     }
   }
+
+  const fetchUserData = useCallback((input) => {
+      fetchUserProfile(input)
+      fetchUserRepos(input)
+  }, [])
 
   return (
     <>
